@@ -56,6 +56,10 @@ public class ReservaServlet extends HttpServlet {
             // Se não houver ID, é uma nova reserva
             Reserva novaReserva = new Reserva(nextReservaId++, nomeSala, responsavel, dataReserva, horaInicio, horaFim, motivo);
             reservas.add(novaReserva);
+
+            // Adicionar mensagem de feedback
+            req.setAttribute("mensagem", "Reserva cadastrada com sucesso!");
+
         } else {
             // Se houver ID, atualizar reserva existente
             int id = Integer.parseInt(idParam);
@@ -70,9 +74,13 @@ public class ReservaServlet extends HttpServlet {
                     break;
                 }
             }
+
+            // Adicionar mensagem de feedback para atualização
+            req.setAttribute("mensagem", "Reserva atualizada com sucesso!");
         }
 
-        // Após cadastrar ou atualizar, redireciona para a listagem de reservas
-        resp.sendRedirect("reserva");
+        // Encaminhar para a página de listagem com a mensagem
+        req.setAttribute("reservas", reservas);
+        req.getRequestDispatcher("listarReservas.jsp").forward(req, resp);
     }
 }
