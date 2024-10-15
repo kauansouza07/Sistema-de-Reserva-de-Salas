@@ -40,7 +40,7 @@
                     <td>${reserva.motivo}</td>
                     <td>
                         <a href="editarReserva.jsp?id=${reserva.id}">Editar</a>
-                        <a href="excluirReserva.jsp?id=${reserva.id}">Excluir</a>
+                        <a href="reserva?action=delete&id=${reserva.id}">Excluir</a> <!-- Link de exclusão atualizado -->
                     </td>
                 </tr>
             </c:forEach>
