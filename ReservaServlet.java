@@ -18,7 +18,13 @@ public class ReservaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
 
-        if ("edit".equals(action)) {
+        if ("delete".equals(action)) {
+            int id = Integer.parseInt(req.getParameter("id"));
+            reservas.removeIf(reserva -> reserva.getId() == id);
+            req.setAttribute("mensagem", "Reserva excluída com sucesso!");
+            req.setAttribute("reservas", reservas);
+            req.getRequestDispatcher("listarReservas.jsp").forward(req, resp);
+        } else if ("edit".equals(action)) {
             // Lógica para editar uma reserva existente
             int id = Integer.parseInt(req.getParameter("id"));
             Reserva reservaParaEditar = null;
@@ -59,7 +65,6 @@ public class ReservaServlet extends HttpServlet {
 
             // Adicionar mensagem de feedback
             req.setAttribute("mensagem", "Reserva cadastrada com sucesso!");
-
         } else {
             // Se houver ID, atualizar reserva existente
             int id = Integer.parseInt(idParam);
