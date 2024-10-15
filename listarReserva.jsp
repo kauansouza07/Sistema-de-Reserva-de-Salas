@@ -8,7 +8,16 @@
 </head>
 <body>
     <h1>Lista de Reservas</h1>
-    <table>
+
+    <!-- Exibe mensagem de sucesso ou erro -->
+    <c:if test="${not empty mensagem}">
+        <div style="color: green;">
+            ${mensagem}
+        </div>
+    </c:if>
+
+    <!-- Tabela com as reservas cadastradas -->
+    <table border="1">
         <thead>
             <tr>
                 <th>Nome da Sala</th>
@@ -21,20 +30,20 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Exemplo de reservas. Estes dados virão do servlet -->
-            <tr>
-                <td>Sala A</td>
-                <td>João</td>
-                <td>2024-10-15</td>
-                <td>09:00</td>
-                <td>10:00</td>
-                <td>Reunião</td>
-                <td>
-                    <a href="editarReserva.jsp?id=1">Editar</a>
-                    <a href="excluirReserva.jsp?id=1">Excluir</a>
-                </td>
-            </tr>
-            <!-- Repita os dados para cada reserva -->
+            <c:forEach var="reserva" items="${reservas}">
+                <tr>
+                    <td>${reserva.nomeSala}</td>
+                    <td>${reserva.responsavel}</td>
+                    <td>${reserva.dataReserva}</td>
+                    <td>${reserva.horaInicio}</td>
+                    <td>${reserva.horaFim}</td>
+                    <td>${reserva.motivo}</td>
+                    <td>
+                        <a href="editarReserva.jsp?id=${reserva.id}">Editar</a>
+                        <a href="excluirReserva.jsp?id=${reserva.id}">Excluir</a>
+                    </td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 </body>
