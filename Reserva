@@ -1,0 +1,77 @@
+public class Reserva {
+    private Integer id;
+    private String nomeSala;
+    private String responsavel;
+    private String dataReserva;
+    private String horaInicio;
+    private String horaFim;
+    private String motivo;
+
+    // Construtor completo
+    public Reserva(Integer id, String nomeSala, String responsavel, String dataReserva, String horaInicio, String horaFim, String motivo) {
+        this.id = id;
+        this.nomeSala = nomeSala;
+        this.responsavel = responsavel;
+        this.dataReserva = dataReserva;
+        this.horaInicio = horaInicio;
+        this.horaFim = horaFim;
+        this.motivo = motivo;
+    }
+
+    // Getters e Setters
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNomeSala() {
+        return nomeSala;
+    }
+
+    public void setNomeSala(String nomeSala) {
+        this.nomeSala = nomeSala;
+    }
+
+    public String getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(String responsavel) {
+        this.responsavel = responsavel;
+    }
+
+    public String getDataReserva() {
+        return dataReserva;
+    }
+
+    public void setDataReserva(String dataReserva) {
+        this.dataReserva = dataReserva;
+    }
+
+    public String getHoraInicio() {
+        return horaInicio;
+    }
+
+    public void setHoraInicio(String horaInicio) {
+        this.horaInicio = horaInicio;
+    }
+
+    public String getHoraFim() {
+        return horaFim;
+    }
+
+    public void setHoraFim(String horaFim) {
+        this.horaFim = horaFim;
+    }
+
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
+}
